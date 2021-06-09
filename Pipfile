@@ -8,6 +8,7 @@ django = "==2.2.5"
 black = "*"
 pillow = "*"
 countries = "*"
+django-countries = "*"
 
 [dev-packages]
 flake8 = "*"
