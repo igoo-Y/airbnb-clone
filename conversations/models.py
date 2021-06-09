@@ -1,6 +1,5 @@
 from django.db import models
 from core import models as core_model
-import core
 
 # Create your models here.
 class Conversation(core_model.TimeStampedModel):
