@@ -53,6 +53,14 @@
             <input value="{{baths}}" id="baths" name="baths" type="number" placeholder="Search by Baths">
         </div>
         <div>
+            <label for="instant">Instant Book</label>
+            <input id="instant" name="instant" type="checkbox" {% if instant %}checked{% endif %}>
+        </div>
+        <div>
+            <label for="superhost">Super Host</label>
+            <input id="superhost" name="superhost" type="checkbox" {% if super_host %}checked{% endif %}>
+        </div>
+        <div>
             <h3>Amenities</h3>
             <ul>
                 {% for amenity in amenities %}
@@ -87,5 +95,12 @@
             </ul>
         </div>
         <button>Search</button>
+
+        <div>
+            <h3>Result</h3>
+            {% for room in rooms %}
+                <h4>{{room.name}}</h4>
+            {% endfor %}
+        </div>
     </form>
 {% endblock %}
