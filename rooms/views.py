@@ -45,7 +45,7 @@ def search(request):
     instant = request.GET.get("instant", False)
     superhost = request.GET.get("superhost", False)
     s_amenities = request.GET.getlist("amenities")
-    s_facilites = request.GET.getlist("facilities")
+    s_facilities = request.GET.getlist("facilities")
 
     form = {
         "city": city,
@@ -59,7 +59,7 @@ def search(request):
         "instant": instant,
         "superhost": superhost,
         "s_amenities": s_amenities,
-        "s_facilities": s_facilites,
+        "s_facilities": s_facilities,
     }
 
     room_types = models.RoomType.objects.all()
@@ -103,6 +103,14 @@ def search(request):
 
     if superhost is True:
         filter_args["host__superhost"] = True
+
+    if len(s_amenities) > 0:
+        for s_amenity in s_amenities:
+            filter_args["amenities__pk"] = int(s_amenity)
+
+    if len(s_facilities) > 0:
+        for s_facility in s_facilities:
+            filter_args["facilities__pk"] = int(s_facility)
 
     rooms = models.Room.objects.filter(**filter_args)
 
