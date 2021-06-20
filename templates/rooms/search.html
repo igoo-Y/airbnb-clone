@@ -11,7 +11,7 @@
     <h2>Search!</h2>
 
     <form action="{% url "rooms:search" %}">
-        {{form}}
+        {{form.as_p}}
         <button>Search</button>
 
         <div>
@@ -21,4 +21,20 @@
             {% endfor %}
         </div>
     </form>
+
+    <!-- {% if rooms.has_previous %}
+        <a href="?page={{rooms.previous_page_number}}">Previous</a>
+    {% endif %} -->
+
+    Page {{rooms.number}} of {{rooms.paginator.num_pages}}
+
+    <!-- {% for p in rooms.paginator.page_range %}
+        <a href="?page={{p}}">{{p}}</a>
+    {% endfor %}
+
+    {% if rooms.has_next %}
+        <a href="?page={{rooms.next_page_number}}">Next</a>
+    {% endif %} -->
+
+
 {% endblock %}
