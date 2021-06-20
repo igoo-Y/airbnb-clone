@@ -91,10 +91,12 @@ class SearchView(View):
 
                 rooms = paginator.get_page(page)
 
+                next_url = request.GET.get("rooms")
+
                 return render(
                     request,
                     "rooms/search.html",
-                    {"form": form, "rooms": rooms},
+                    {"form": form, "rooms": rooms, "next_url": next_url},
                 )
 
         else:

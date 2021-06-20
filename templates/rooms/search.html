@@ -22,19 +22,20 @@
         </div>
     </form>
 
+    {% load rooms_extras %}
+
     {% if rooms.has_previous %}
-        <a href="?{{request.GET.urlencode}}&page={{rooms.previous_page_number}}">Previous</a>
+        <a href="{% my_url rooms.previous_page_number 'page' request.GET.urlencode %}">Previous</a>
     {% endif %}
 
     Page {{rooms.number}} of {{rooms.paginator.num_pages}}
 
     {% for p in rooms.paginator.page_range %}
-        <a href="?{{request.GET.urlencode}}&page={{p}}">{{p}}</a>
+        <a href="{% my_url p 'page' request.GET.urlencode %}">{{p}}</a>
     {% endfor %}
 
     {% if rooms.has_next %}
-        <a href="?{{request.GET.urlencode}}&page={{rooms.next_page_number}}">Next</a>
+        <a href="{% my_url rooms.next_page_number 'page' request.GET.urlencode %}">Next</a>
     {% endif %}
-
 
 {% endblock %}
