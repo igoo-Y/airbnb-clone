@@ -4,7 +4,7 @@ from django.views.generic import FormView
 from django.shortcuts import redirect
 from django.contrib.auth import authenticate, login, logout
 from django.urls.base import reverse
-from . import forms
+from . import forms, models
 
 
 class LoginView(FormView):
@@ -34,7 +34,7 @@ class SignUpView(FormView):
     initial = {
         "first_name": "Ingyu",
         "last_name": "Yang",
-        "email": "ingyu@gmail.com",
+        "email": "yang_ig@naver.com",
         "password": "12",
         "password1": "12",
     }
@@ -46,4 +46,5 @@ class SignUpView(FormView):
         user = authenticate(self.request, username=email, password=password)
         if user is not None:
             login(self.request, user)
+        user.verify_email()
         return super().form_valid(form)
