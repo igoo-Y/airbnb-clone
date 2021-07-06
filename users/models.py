@@ -56,9 +56,7 @@ class User(AbstractUser):
         if self.email_verified is False:
             secret = uuid.uuid4().hex[:20]
             self.email_secret = secret
-            html_message = (
-                f'To verify your account, click <a href="http://127.0.0.1:8000/users/verify/{secret}">Here</a>',
-            )
+            html_message = f'To verify your account, click <a href="http://127.0.0.1:8000/users/verify/{secret}">Here</a>'
             send_mail(
                 "Verify Airbnb Account",
                 strip_tags(html_message),
