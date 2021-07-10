@@ -8,15 +8,18 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <title>{% block page_name %}{% endblock page_name %} | Ibnb</title>
 </head>
-<body>
-    <header> 
-        {% include "partials/nav.html" %}
-        
+<body class="text-gray-800">
+    <header class="container max-w-full flex items-center justify-between px-5 h-20 border-b border-gray-300">
+        <div class="flex items-center">
+            <a href="{% url 'core:home' %}"><img class="w-32 mr-6" src="{% static 'img/airbnb-logo.png' %}" alt=""></a>
         {% block search-bar %}
             <form action="{% url 'rooms:search' %}">
-                <input name="city" type="text" placeholder="Search by City">
+                <input class="border px-2 py-1 rounded-md" name="city" type="text" placeholder="Search by City">
             </form>
         {% endblock %}
+        </div>
+
+        {% include "partials/nav.html" %}
     </header>
 
     {% block content %}{% endblock content %}
