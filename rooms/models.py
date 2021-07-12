@@ -120,3 +120,7 @@ class Room(core_models.TimeStampedModel):
             return round(result, 2)
         else:
             return 0
+
+    def first_photo(self):
+        (photo,) = self.photos.all()[:1]
+        return photo.file.url
