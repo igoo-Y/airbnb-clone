@@ -23,8 +23,9 @@
         {% include "partials/nav.html" %}
     </header>
 
-    {% block content %}{% endblock content %}
+    {% include 'partials/messages.html' %}
 
+    {% block content %}{% endblock content %}
     {% include "partials/footer.html" %}
 </body>
 </html>
