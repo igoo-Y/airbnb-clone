@@ -1,9 +1,9 @@
 <div class="w-1/4 mb-10 px-2 overflow-hidden">
     <div class="w-full h-64 bg-cover bg-center rounded-md mb-2" style="background-image: url({{room.first_photo}});"></div>
     <div class="flex justify-between mb-1 truncate">
-        <div class="w-4/5 overflow-hidden flex">
+        <div class="w-4/5 overflow-hidden flex items-center">
             {% if room.host.superhost %}
-                <span class="uppercase font-medium text-xs border border-black text-black rounded px-1 mr-1">superhost</span>
+                <span class="uppercase font-medium text-xs border border-black text-black rounded px-1 mr-2">superhost</span>
             {% endif %}
 
             <span class="text-sm text-gray-500 block truncate">
