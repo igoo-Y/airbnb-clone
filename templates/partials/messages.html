@@ -1,7 +1,7 @@
 {% if messages %}
-<ul class="absolute top-3 left-0 right-0 mx-auto flex justify-center">
+<ul class="absolute top-14 left-0 right-0 mx-auto flex justify-center">
     {% for message in messages %}
-    <li class="bg-blue-700 text-white px-20 py-6 rounded-full {% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</li>
+    <li class="messages text-white font-medium z-10 px-20 py-2 rounded-full {% if message.tags %}{{ message.tags }}{% endif %}">{{ message }}</li>
     {% endfor %}
 </ul>
 {% endif %}
