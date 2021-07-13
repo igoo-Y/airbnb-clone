@@ -56,9 +56,9 @@ def complete_verification(request, key):
         user.email_verified = True
         user.email_secret = ""
         user.save()
-        # to do: add success message
+        messages.success(request, f"Welcome, {user.first_name}!")
     except models.User.DoesNotExist:
-        # to do: add error message
+        messages.error(request, "Sign Up Failed")
         pass
     return redirect(reverse("core:home"))
 
