@@ -1,7 +1,6 @@
 import os
 import requests
 from requests.sessions import Request
-from users import models
 from django.urls import reverse_lazy
 from django.views.generic import FormView, DetailView, UpdateView
 from django.shortcuts import redirect
@@ -9,6 +8,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.urls.base import reverse
 from django.core.files.base import ContentFile
 from django.contrib import messages
+from django.contrib.auth.views import PasswordChangeView
+from users import models
 from . import forms, models
 
 
@@ -220,3 +221,14 @@ class UpdateProfileView(UpdateView):
 
     def get_object(self, queryset=None):
         return self.request.user
+
+    def form_valid(self, form):
+        email = form.cleaned_data.get("email")
+        self.object.username = email
+        self.object.save()
+        return super().form_valid(form)
+
+
+class UpdatePasswordView(PasswordChangeView):
+
+    template_name = "users/update_password.html"
