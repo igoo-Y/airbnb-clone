@@ -219,6 +219,15 @@ class UpdateProfileView(UpdateView):
         "currency",
     )
 
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class=form_class)
+        form.fields["first_name"].widget.attrs = {"placeholder": "first_name"}
+        form.fields["last_name"].widget.attrs = {"placeholder": "last_name"}
+        form.fields["birthdate"].widget.attrs = {"placeholder": "Birthdate"}
+        form.fields["gender"].widget.attrs = {"placeholder": "gender"}
+        form.fields["bio"].widget.attrs = {"placeholder": "bio"}
+        return form
+
     def get_object(self, queryset=None):
         return self.request.user
 
@@ -232,3 +241,10 @@ class UpdateProfileView(UpdateView):
 class UpdatePasswordView(PasswordChangeView):
 
     template_name = "users/update_password.html"
+
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class=form_class)
+        form.fields["old_password"].widget.attrs = {"placeholder": "Current Password"}
+        form.fields["new_password1"].widget.attrs = {"placeholder": "New Password"}
+        form.fields["new_password2"].widget.attrs = {"placeholder": "Confirm Password"}
+        return form
