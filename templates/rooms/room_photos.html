@@ -14,7 +14,7 @@
                     <span class="ml-5 text-xl">{{photo.caption}}</span> 
                 </div>
                 <div class="flex flex-col w-1/12">
-                    <a href="#" class="btn-link block mb-5 bg-green-500">Edit</a>
+                    <a href="{% url 'rooms:edit-photo' room.pk photo.pk %}" class="btn-link block mb-5 bg-green-500">Edit</a>
                     <a href="{% url 'rooms:delete-photo' room.pk photo.pk %}" class="btn-link block bg-red-600">Delete</a>
                 </div>
             </div>
