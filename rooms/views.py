@@ -1,11 +1,13 @@
 import django
 from django.contrib import messages
+from django.contrib.auth import mixins
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
-from django.views.generic import ListView, DetailView, View, UpdateView
+from django.views.generic import ListView, DetailView, View, UpdateView, FormView
 from django.shortcuts import redirect, render
 from django.core.paginator import Paginator
+from django.views.generic.edit import CreateView
 from django_countries import countries
 from users import mixins as user_mixins
 from django.contrib.messages.views import SuccessMessageMixin
@@ -186,3 +188,15 @@ class EditPhotoView(user_mixins.LoggedInOnlyView, SuccessMessageMixin, UpdateVie
     def get_success_url(self):
         room_pk = self.kwargs.get("room_pk")
         return reverse("rooms:photos", kwargs={"pk": room_pk})
+
+
+class AddPhotoView(user_mixins.LoggedInOnlyView, FormView):
+
+    model = models.Photo
+    template_name = "rooms/photo_create.html"
+    form_class = forms.CreatePhotoForm
+
+    def form_valid(self, form):
+        pk = self.kwargs.get("pk")
+        form.save(pk)
+        return redirect(reverse("rooms:photos", kwargs={"pk": pk}))
