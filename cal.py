@@ -41,7 +41,3 @@ class Canlendar(calendar.Calendar):
 
     def get_month(self):
         return self.months[self.month - 1]
-
-
-new_cal = Canlendar(2021, 7)
-new_cal.get_days()
