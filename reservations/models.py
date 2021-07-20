@@ -50,6 +50,9 @@ class Reservation(core_models.TimeStampedModel):
     )
     objects = managers.CustomReservationManager()
 
+    def get_room_host(self):
+        return self.room.host
+
     def __str__(self):
         return f"{self.room} - {self.check_in}"
 

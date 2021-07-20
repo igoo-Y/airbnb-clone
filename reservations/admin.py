@@ -15,6 +15,7 @@ class ReservationAdmin(admin.ModelAdmin):
         "guest",
         "in_progress",
         "is_finished",
+        "get_room_host",
     )
 
     list_filter = ("status",)
