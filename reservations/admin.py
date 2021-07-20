@@ -22,4 +22,10 @@ class ReservationAdmin(admin.ModelAdmin):
 
 @admin.register(models.BookedDay)
 class BookedDayAdmin(admin.ModelAdmin):
-    pass
+
+    """BookedDay Admin Definition"""
+
+    list_display = (
+        "day",
+        "reservation",
+    )
