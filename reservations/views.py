@@ -6,7 +6,8 @@ from django.urls.conf import path
 from django.contrib import messages
 from django.views.generic import View
 from rooms import models as room_models
-from . import models
+from . import models, managers
+import reservations
 
 
 class CreateError(Exception):
@@ -33,4 +34,7 @@ def create(request, room, year, month, day):
 
 
 class ReservationDetailView(View):
-    pass
+    def get(self, pk):
+        reservation = models.Reservation.objects.get_or_none(pk=pk)
+        if not reservation:
+            return redirect(redirect("core:home"))
