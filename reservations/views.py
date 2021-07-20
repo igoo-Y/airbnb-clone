@@ -38,11 +38,11 @@ class ReservationDetailView(View):
     def get(self, *args, **kwargs):
         pk = kwargs.get("pk")
         reservation = models.Reservation.objects.get_or_none(pk=pk)
-        # if not reservation or (
-        #     reservation.guest != self.request.user
-        #     and reservation.room.host != self.request.user
-        # ):
-        #     raise Http404()
+        if not reservation or (
+            reservation.guest != self.request.user
+            and reservation.room.host != self.request.user
+        ):
+            raise Http404()
         return render(
             self.request, "reservations/detail.html", {"reservation": reservation}
         )
