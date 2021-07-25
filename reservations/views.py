@@ -7,6 +7,7 @@ from django.urls.conf import path
 from django.contrib import messages
 from django.views.generic import View
 from rooms import models as room_models
+from reviews import forms as review_forms
 from . import models, managers
 import reservations
 
@@ -43,8 +44,11 @@ class ReservationDetailView(View):
             and reservation.room.host != self.request.user
         ):
             raise Http404()
+        form = review_forms.CreateReviewForm()
         return render(
-            self.request, "reservations/detail.html", {"reservation": reservation}
+            self.request,
+            "reservations/detail.html",
+            {"reservation": reservation, "form": form},
         )
 
 
