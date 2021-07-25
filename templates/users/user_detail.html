@@ -24,7 +24,7 @@
                 <a href="{% url 'users:update' %}" class="btn-link">Edit Profile</a>
             {% endif %}
         </div>
-        {% if user_obj.rooms.count > 0%}
+        {% if user_obj.rooms.count > 0 %}
             <div class="container mx-auto pb-10 flex flex-col items-center">
                 <h3 class="mb-12 text-xl">{{user_obj.first_name}}'s Rooms</h3>
                 <div class="flex flex-wrap -mx-8 mb-10">
@@ -34,5 +34,5 @@
                 </div>
             </div>
         {% endif %}
-    </div>
+    </div> 
 {% endblock %}
