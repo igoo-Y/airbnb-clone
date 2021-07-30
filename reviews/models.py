@@ -18,6 +18,9 @@ class Review(core_models.TimeStampedModel):
         "rooms.Room", related_name="reviews", on_delete=models.CASCADE
     )
 
+    class Meta:
+        ordering = ("-created",)
+
     def __str__(self):
         return f"{self.review} - {self.room}"
 

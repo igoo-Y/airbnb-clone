@@ -7,6 +7,7 @@ from . import forms
 
 
 def create_review(request, room):
+    print(request.method)
     if request.method == "POST":
         form = forms.CreateReviewForm(request.POST)
         room = room_models.Room.objects.get_or_none(pk=room)
