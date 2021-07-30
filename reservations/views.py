@@ -8,7 +8,7 @@ from django.contrib import messages
 from django.views.generic import View
 from rooms import models as room_models
 from reviews import forms as review_forms
-from . import models, managers
+from . import models
 import reservations
 
 
