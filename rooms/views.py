@@ -209,7 +209,7 @@ class CreateRoomView(user_mixins.LoggedInOnlyView, FormView):
 
     def form_valid(self, form):
         room = form.save()
-        room.host = self.request.user
+        room.host = self.request.user  # 로그인한 유저
         room.save()
         form.save_m2m()
         messages.success(self.request, "Room Uploaded!")
